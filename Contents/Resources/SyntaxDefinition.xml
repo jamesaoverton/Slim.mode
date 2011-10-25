@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syntax>
+    <head>
+        <name>Slim Syntax</name>
+        <!-- See http://slim-lang.com/docs.html -->
+        <!-- Known bugs: does not handle multi-line blocks. -->
+
+        <autocompleteoptions use-spelling-dictionary="no" />
+
+        <charsintokens>
+            <![CDATA[_0987654321abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@#%.]]>
+        </charsintokens>
+    </head>
+
+    <states>
+        <default id="Base" color="#000" inverted-color="#fff">
+
+            <!-- Colors:
+                elements:   #a60096
+                attributes: #b05400
+                comments:   #008627
+                contents:   #3c00ba
+                id, class:  #e200d2
+                code:       #910018
+            -->
+        
+			<keywords id="HTML Element" color="#a60096" useforautocomplete="no">
+				<regex>^\s*(\w[\w\:\_\-]*)</regex>
+			</keywords>
+
+			<keywords id="HTML ID Shortcut" color="#e200d2" useforautocomplete="no">
+				<regex>^\s*[\w\:\_\-\.]*(\#[\w\:\_\-]*)</regex>
+			</keywords>
+
+			<keywords id="HTML Class Shortcut" color="#e200d2" useforautocomplete="no">
+				<regex>^\s*[\w\:\_\-\#]*(\.[\w\:\_\-\.]*)</regex>
+			</keywords>
+
+			<state id="HTML Comment" color="#008627" useforautocomplete="no">
+				<begin><regex>^\s*\/[\!\[]</regex></begin>
+				<end><regex>[\r\n]</regex></end>
+			</state>
+
+			<state id="Slim Comment" color="#008627" font-style="italic" useforautocomplete="no">
+				<begin><regex>^\s*\/</regex></begin>
+				<end><regex>[\r\n]</regex></end>
+			</state>
+
+			<keywords id="HTML Attribute" color="#b05400" useforautocomplete="no">
+				<regex>(\w[\w\:\_\-]*)=</regex>
+			</keywords>
+
+			<keywords id="HTML Attribute Equals" color="#a60096" useforautocomplete="no">
+				<regex>\w[\w\:\_\-]*(=)</regex>
+			</keywords>
+
+			<keywords id="HTML Attribute Content" color="#3c00ba" useforautocomplete="no">
+				<regex>\w[\w_\-]*=(\"[^\"]+?\")</regex>
+				<regex>\w[\w_\-]*=(\'[^\']+?\')</regex>
+				<regex>\w[\w_\-]*=(\([^\(\)]+?\))</regex>
+				<regex>\w[\w_\-]*=(\[[^\[\]]+?\])</regex>
+				<regex>\w[\w_\-]*=(\{[^\{\}]+?\})</regex>
+				<regex>\w[\w_\-]*=(\{[^\{\}]+?\})</regex>
+			</keywords>
+
+			<keywords id="Dynamic Attribute" color="#910018" useforautocomplete="no">
+				<regex>\w[\w\:\_\-]*=([\w\:\_\-]+\([^\(\)]*\))</regex>
+			</keywords>
+
+			<state id="Dynamic Content" color="#910018" useforautocomplete="no">
+				<begin><regex>\s=+</regex></begin>
+				<end><regex>[\r\n]</regex></end>
+			</state>
+
+			<keywords id="Nested Static Content" color="#3c00ba" useforautocomplete="no">
+				<regex>^\s*([|'])</regex>
+			</keywords>
+
+			<state id="Ruby Code Bypassing Escape" color="#910018" useforautocomplete="no">
+				<begin><regex>\#\{\{</regex></begin>
+				<end><regex>\}\}</regex></end>
+			</state>
+
+			<state id="Ruby Code" color="#910018" useforautocomplete="no">
+				<begin><regex>\#\{</regex></begin>
+				<end><regex>\}</regex></end>
+            </state>
+
+			<state id="Slim Control Logic" color="#910018" useforautocomplete="no">
+				<begin><regex>^\s*-</regex></begin>
+				<end><regex>[\r\n]</regex></end>
+			</state>
+
+			<keywords id="Slim Engine" color="#910018" useforautocomplete="no">
+				<regex>^\s*(\w[\w_\-]*\:)</regex>
+			</keywords>
+
+        </default>
+    </states>
+</syntax>
