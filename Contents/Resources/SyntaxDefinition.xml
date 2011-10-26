@@ -51,7 +51,7 @@
 			</keywords>
 
 			<keywords id="HTML Attribute Equals" color="#a60096" useforautocomplete="no">
-				<regex>\w[\w\:\_\-]*(=)</regex>
+				<regex>\w[\w\:\_\-]*(=+)</regex>
 			</keywords>
 
 			<keywords id="HTML Attribute Content" color="#3c00ba" useforautocomplete="no">
@@ -64,7 +64,7 @@
 			</keywords>
 
 			<keywords id="Dynamic Attribute" color="#910018" useforautocomplete="no">
-				<regex>\w[\w\:\_\-]*=([\w\:\_\-]+\([^\(\)]*\))</regex>
+				<regex>\w[\w\:\_\-]*=+([\w\:\_\-]+\([^\(\)]*\))</regex>
 			</keywords>
 
 			<state id="Dynamic Content" color="#910018" useforautocomplete="no">
